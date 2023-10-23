@@ -22,6 +22,7 @@ public class DataConfiguration {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         //Setar a url do banco
         dataSource.setUrl("jdbc:mysql://localhost:3306/apprh?useTimezone=true&serverTimezone=UTC");
+        dataSource.setUsername("root");
         dataSource.setPassword("");
         return dataSource;
     }
