@@ -1,7 +1,6 @@
 package com.br.AppRH.AppRH;
 
 import javax.sql.DataSource;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -27,7 +26,6 @@ public class DataConfiguration {
         return dataSource;
     }
     //criando o JPA
-
     @Bean
     public JpaVendorAdapter jpaVendorAdapter(){
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
