@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 //cascade type, Para quando deletar uma vaga, ele deletar tudo ligado a ela
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
 //Genereted value e genereted type, gerar um id automatico
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +16,9 @@ import jakarta.persistence.OneToMany;
 //start validation, para validações
 import jakarta.validation.constraints.NotEmpty;
 
-public class vaga implements Serializable{
+//É porque o candidato é uma entidade da tabela
+@Entity
+public class Vaga implements Serializable{
     //Quer dizer q um atributo faz um controle de versionamento == indica se a versao do objeto é compativel com a da classe 
     private static final long serialVersionUID = 1L;
     //codigo da vaga
