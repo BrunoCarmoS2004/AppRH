@@ -1,6 +1,8 @@
 package com.br.AppRH.AppRH.Controllers;
 //Não explicou, copia tudo
 import jakarta.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +18,10 @@ import com.br.AppRH.AppRH.Repository.VagaRepository;
 //Mostrar para o código que essa classe é um controller
 @Controller
 public class VagaController {
+    //Ele le automaticamente o repositório
+    @Autowired
     private VagaRepository vr;
+    @Autowired
     private CandidatoRepository cr;
     //criar as vagas
     //Endereço no site para entrar nesse METODO de cadastrar vaga
@@ -29,7 +34,7 @@ public class VagaController {
     public String form(@Valid Vaga vaga, BindingResult result, RedirectAttributes attributes){
         if(result.hasErrors()){
             //Para mostrar uma mensagem
-            attributes.addAttribute("mensagem", "Verifique os campos...");
+            attributes.addAttribute("mensagem_erro", "Verifique os campos...");
             //caso coloque algo errado, voltar para a mesma pagina
             return "redirect:/cadastrarVaga";
         }
@@ -50,7 +55,7 @@ public class VagaController {
     @RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
     public ModelAndView detalherVaga(@PathVariable("codigo") long codigo){
         Vaga vaga = vr.findByCodigo(codigo);
-        ModelAndView mv = new ModelAndView("vaga/detalherVaga");
+        ModelAndView mv = new ModelAndView("vaga/detalhesVaga");
         mv.addObject("vaga", vaga);
         Iterable<Candidato>candidatos = cr.findByVaga(vaga);
         mv.addObject(candidatos);
@@ -64,14 +69,15 @@ public class VagaController {
         return "redirect:/vagas";
     }
     //detalhar e adicionar candidato
+    @RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
     public String detalhesVagaPost(@PathVariable("codigo") long codigo, @Valid Candidato candidato, BindingResult result, RedirectAttributes attributes){
         if(result.hasErrors()){
             attributes.addFlashAttribute("mensagem", "Verifique os campos");
             return "redirect:/{codigo}";
         }
         if(cr.findByRg(candidato.getRg()) != null){
-            attributes.addFlashAttribute("mensagem erro", "RG duplicado!");
-            return "redirect://{codigo}";
+            attributes.addFlashAttribute("mensagem_erro", "RG duplicado!");
+            return "redirect:/{codigo}";
         }
         Vaga vaga = vr.findByCodigo(codigo);
         candidato.setVaga(vaga);
@@ -92,20 +98,21 @@ public class VagaController {
     // Metodo para entrar na pagina de atualizar as vagas
     //Pagina de formulario de edição de vaga
     @RequestMapping(value = "/editar-vaga", method = RequestMethod.GET)
-    public ModelAndView editarVaga(long codigo){
-        Vaga vaga = vr.findByCodigo(codigo);
-        ModelAndView mv = new ModelAndView("vaga/update-vaga");
-        mv.addObject("vaga", vaga);
-        return mv;
-    }
-    //UPDATE DA VAGA
-    @RequestMapping(value = "/editar-vaga", method = RequestMethod.POST)
-    public String updadeVaga(@Valid Vaga vaga, BindingResult result, RedirectAttributes attributes){
-        vr.save(vaga);
-        attributes.addFlashAttribute("sucess", "Vaga alterada com sucesso");
-        long codigoLong = vaga.getCodigo();
-        //fazendo o int virar String
-        String codigo = ""+codigoLong;
-        return "redirect:/"+codigo;
-    }
+	public ModelAndView editarVaga(long codigo) {
+		Vaga vaga = vr.findByCodigo(codigo);
+		ModelAndView mv = new ModelAndView("vaga/update-vaga");
+		mv.addObject("vaga", vaga);
+		return mv;
+	}
+
+	// UPDATE vaga
+	@RequestMapping(value = "/editar-vaga", method = RequestMethod.POST)
+	public String updateVaga(@Valid Vaga vaga, BindingResult result, RedirectAttributes attributes) {
+		vr.save(vaga);
+		attributes.addFlashAttribute("success", "Vaga alterada com sucesso!");
+
+		long codigoLong = vaga.getCodigo();
+		String codigo = "" + codigoLong;
+		return "redirect:/" + codigo;
+	}
 }
