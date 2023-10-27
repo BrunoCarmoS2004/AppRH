@@ -30,6 +30,7 @@ public class VagaController {
         //RETORNAR UMA VIEW 
         return "vaga/formVaga";
     }
+
     @RequestMapping(value = "/cadastrarVaga", method = RequestMethod.POST)
     public String form(@Valid Vaga vaga, BindingResult result, RedirectAttributes attributes){
         if(result.hasErrors()){
@@ -61,13 +62,7 @@ public class VagaController {
         mv.addObject(candidatos);
         return mv;
     }
-    //Deletar Vaga
-    @RequestMapping("/deletarVaga")
-    public String deletarVaga(long codigo){
-        Vaga vaga = vr.findByCodigo(codigo);
-        vr.delete(vaga);
-        return "redirect:/vagas";
-    }
+   
     //detalhar e adicionar candidato
     @RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
     public String detalhesVagaPost(@PathVariable("codigo") long codigo, @Valid Candidato candidato, BindingResult result, RedirectAttributes attributes){
@@ -85,6 +80,14 @@ public class VagaController {
         attributes.addFlashAttribute("mensagem", "Candidato adicionado com sucesso");
         return "redirect:/{codigo}";
     }
+     //Deletar Vaga
+    @RequestMapping("/deletarVaga")
+    public String deletarVaga(long codigo){
+        Vaga vaga = vr.findByCodigo(codigo);
+        vr.delete(vaga);
+        return "redirect:/vagas";
+    }
+    
     //DELETAR CANDIDATO da vaga pelo RG
     @RequestMapping("/deletarCandidato")
     public String deletarCandidato(String rg){
