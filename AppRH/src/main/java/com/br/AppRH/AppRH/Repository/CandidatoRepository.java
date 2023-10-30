@@ -2,7 +2,6 @@ package com.br.AppRH.AppRH.Repository;
 //Repository == Padrão de projeto entre o controller e o model
 
 import java.util.List;
-import org.springframework.data.jpa.repository.Query;
 //faz o crud automaticamente
 import org.springframework.data.repository.CrudRepository;
 import com.br.AppRH.AppRH.Model.Candidato;
