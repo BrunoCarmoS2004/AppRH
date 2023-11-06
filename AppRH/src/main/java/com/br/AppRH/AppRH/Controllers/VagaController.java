@@ -59,7 +59,7 @@ public class VagaController {
         ModelAndView mv = new ModelAndView("vaga/detalhesVaga");
         mv.addObject("vaga", vaga);
         Iterable<Candidato>candidatos = cr.findByVaga(vaga);
-        mv.addObject("candidatos",candidatos);
+        mv.addObject("candidato",candidatos);
         return mv;
     }
    

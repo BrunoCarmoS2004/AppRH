@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>| App RH - UC 12 |</title>
+	<title>App RH</title>
 
 	<!-- Bootstrap -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,12 +19,11 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-	<title>VagasApp</title>
+	<title>| App RH - UC 12 |</title>
 
 </head>
 
 <body>
-
 
 
 	<header>
@@ -59,35 +58,34 @@
 
 	<div class="container">
 
-		<h1>Lista de vagas cadastradas</h1>
+		<h1>Lista interna de funcionários</h1>
 
 		<br>
 
 		<table class="table table-hover table-responsive w-auto table-striped">
 			<thead>
 				<tr>
-					<th scope="col">Nome da vaga:</th>
-					<th scope="col">Descrição:</th>
-					<th scope="col">Salário:</th>
-					<th scope="col">Expira:</th>
+					<th scope="col">Nome:</th>
+					<th scope="col">Data de nascimento:</th>
+					<th scope="col">E-mail:</th>
 					<th scope="col"></th>
-					<th scope="col">Ações:</th>
+					<th scope="col">Ação</th>
 					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="vaga: ${vagas}">
-					<!--VC = VagaController-->
-					<!--detalherVaga = função la no controller-->
-					<!--Faz uma interação dentro de uma lista de vagas-->
-					<td><a th:href="${(#mvc.url('VC#detalherVaga').arg(0, vaga.codigo)).build()}">
-					<span th:text="${vaga.nome}"></span></a></td>
-					<td><span th:text="${vaga.descricao}"></span></td>
-					<td>R$ <span th:text="${vaga.salario}"></span></td>
-					<td><span th:text="${vaga.data}"></span></td>
-					<td><a th:href="${(#mvc.url('VC#deletarVaga').arg(0, vaga.codigo)).build()}"><button type="button" class="btn btn-danger">Excluir</button></a></td>
-					<td><a th:href="${(#mvc.url('VC#editarVaga').arg(0, vaga.codigo)).build()}"><button type="button" class="btn btn-primary">Editar</button></a></td>
-					<td><a th:href="${(#mvc.url('VC#detalherVaga').arg(0, vaga.codigo)).build()}"><button type="button" class="btn btn-success">Adicionar candidato</button></a></td>
+				<tr>
+
+					<td><a href="#"><span></span></a></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td><a href="#" class="waves-effect waves-light btn-small"><button type="button"
+								class="btn btn-danger">Excluir</button></a></td>
+					<td><a href="#"><button type="button" class="btn btn-primary">Editar</button></a></td>
+
+					<td><a href="#"><button type="button" class="btn btn-success">Adicionar
+								dependente</button></a></td>
+
 				</tr>
 			</tbody>
 		</table>
@@ -101,12 +99,13 @@
 		</div>
 
 
+
 		<!--JavaScript bootstrap-->
 		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 
-			</script>
+		</script>
 </body>
 
 </html>
