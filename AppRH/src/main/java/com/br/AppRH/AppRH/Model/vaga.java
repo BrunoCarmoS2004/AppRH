@@ -3,9 +3,6 @@ package com.br.AppRH.AppRH.Model;
 import java.io.Serializable;
 //biblioteca para lista
 import java.util.List;
-
-import org.hibernate.annotations.Cascade;
-
 //cascade type, Para quando deletar uma vaga, ele deletar tudo ligado a ela
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
