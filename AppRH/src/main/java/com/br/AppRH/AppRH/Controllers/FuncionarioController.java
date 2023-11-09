@@ -1,7 +1,6 @@
 package com.br.AppRH.AppRH.Controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,13 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.br.AppRH.AppRH.Model.Funcionario;
 import com.br.AppRH.AppRH.Repository.DependentesRepository;
 import com.br.AppRH.AppRH.Repository.FuncionarioRepository;
-
 import jakarta.validation.Valid;
-
 import com.br.AppRH.AppRH.Model.Dependentes;
 
 @Controller
