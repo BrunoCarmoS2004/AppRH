@@ -57,7 +57,7 @@ public class VagaController {
         Vaga vaga = vr.findByCodigo(codigo);
         ModelAndView mv = new ModelAndView("vaga/detalhesVaga");
         mv.addObject("vaga", vaga);
-        Iterable<Candidato>candidatos = cr.findByVaga(vaga);
+        Iterable<Candidato> candidatos = cr.findByVaga(vaga);
         mv.addObject("candidato",candidatos);
         return mv;
     }

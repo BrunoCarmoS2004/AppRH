@@ -58,49 +58,46 @@
 	<div class="container">
 
 
-
+		<th:block th:include="mensagemValidacao"></th:block>
 		<form method="post">
-
 			<h1>Atualizar Funcionário</h1>
-
 			<br>
-
 			<div class="form-group">
-				<label for=""><b>Nome do funcionário:</b> </label> <input type="text" class="form-control" value=""
-					name="nome" required /> <small class="form-text text-muted"><i>* Utilize nomes e
-						termos mais utilizados no mercado.</i></small>
+				<label for="">
+					<b>Nome do funcionário:</b> 
+				</label> 
+				<input type="text" class="form-control" th:attr="value= ${funcionario.nome}" value="" name="nome" required /> 
+				<small class="form-text text-muted">
+					<i>* Utilize nomes etermos mais utilizados no mercado.</i>
+				</small>
 			</div>
-
-
 			<div class="row">
-
 				<div class="col">
 					<div class="form-group">
-						<label for=""><b>Data de nascimento:</b></label> <input type="date" class="form-control"
-							value="" name="data" required /><small class="form-text text-muted"><i>* Data de
-								nascimento.</i></small>
+						<label for="">
+							<b>Data de nascimento:</b>
+						</label> 
+						<input type="date" class="form-control" th:attr="value= ${funcionario.data}" value="" name="data" required />
+						<small class="form-text text-muted">
+							<i>* Data de nascimento.</i>
+						</small>
 					</div>
 				</div>
 				<div class="col">
-
 					<div class="form-group">
-						<label for=""><b>E-mail:</b></label><input type="text" class="form-control" value=""
-							name="email" required /><small class="form-text text-muted"><i>* email@email.com</i></small>
+						<label for="">
+							<b>E-mail:</b>
+						</label>
+						<input type="text" class="form-control" th:attr="value= ${funcionario.email}" value=""name="email" required />
+						<small class="form-text text-muted">
+							<i>* email@email.com</i>
+						</small>
 					</div>
-
 				</div>
 			</div>
-
-
-
-
-			<button type="submit" class="btn btn-success">Atualizar
-				Funcionário</button>
+			<button type="submit" class="btn btn-success">Atualizar Funcionário</button>
 		</form>
 	</div>
-
-
-
 	<div style="height: 100px;"></div>
 
 	<div class="footer-copyright fixed-bottom bg-dark text-center py-3">

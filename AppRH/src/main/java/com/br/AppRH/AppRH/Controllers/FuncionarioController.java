@@ -35,11 +35,15 @@ public class FuncionarioController {
     public String form(@Valid Funcionario funcionario, BindingResult result, RedirectAttributes attributes){
         if(result.hasErrors()){
             attributes.addFlashAttribute("mensagem_erro", "Verifique os campos");
-            return "redirect:/cadastrarFuncionarios";
+            return "redirect:/cadastrarFuncionario";
+        }
+        if(fr.findByEmail(funcionario.getEmail()) != null){
+            attributes.addFlashAttribute("mensagem_erro", "Email ja usado!");
+           return "redirect:/cadastrarFuncionario";
         }
         fr.save(funcionario);
         attributes.addFlashAttribute("mensagem", "Funcionario Cadastrado com sucesso!");
-        return "redirect:/cadastrarFuncionarios";
+        return "redirect:/cadastrarFuncionario";
     }
 
     //Listar Funcionario
@@ -107,7 +111,7 @@ public class FuncionarioController {
        long idlong = funcionario.getId();
        //para transfomar em string
        String id =""+idlong;
-       return "redirec:/dependentes/"+id;
+       return "redirect:/dependentes/"+id;
     }
 
     @RequestMapping("/deletarDependete")

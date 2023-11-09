@@ -59,18 +59,18 @@
 	<div class="container">
 
 		<h1>Informações do funcionário:</h1>
-		<div class="container">
+		<div class="container" th:each="funcionario : ${funcionario}">
 
 			<br>
 
 			<p>
-				<b>Nome:</b> <span></span>
+				<b>Nome:</b> <span th:text="${funcionario.nome}"></span>
 			</p>
 			<p>
-				<b>Data de nascimento:</b> <span></span>
+				<b>Data de nascimento:</b> <span th:text="${funcionario.data}"></span>
 			</p>
 			<p>
-				<b>E-mail:</b> <span></span>
+				<b>E-mail:</b> <span th:text="${funcionario.email}"></span>
 			</p>
 
 
@@ -79,8 +79,7 @@
 			<h2>Cadastrar dependentes</h2>
 
 
-			<form method="post">
-
+			<form method="post" th:object="${dependentes}">
 				<div class="form-group">
 					<div class="row">
 
@@ -102,7 +101,7 @@
 
 							<div class="form-group">
 								<label for=""><b>Data de nascimento:</b></label> <input type="date" value=""
-									name="datanascimento" class="form-control" required /> <small
+									name="dataNascimento" class="form-control" required /> <small
 									class="form-text text-muted"><i>*
 										Dia/Mês/Ano.</i></small>
 							</div>
@@ -120,7 +119,7 @@
 
 
 		</div>
-
+		<th:block th:include="mensagemValidacao"></th:block>
 
 
 		<br> <br>
@@ -138,11 +137,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td><span></span></td>
-					<td><span></span></td>
-					<td><span></span></td>
-					<td><a class="waves-effect waves-light btn-small" href="#"><button type="button"
+				<tr th:each="dependentes:${dependentes}">
+					<td><span th:text="${dependentes.nome}"></span></td>
+					<td><span th:text="${dependentes.cpf}"></span></td>
+					<td><span th:text="${dependentes.dataNascimento}"></span></td>
+					<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('FC#deletarDependente').arg(0, dependentes.cpf)).build()}"><button type="button"
 								class="btn btn-danger">Excluir</button></a></td>
 
 

@@ -102,7 +102,7 @@
 						</div>
 
 						<div class="col">
-							<label for=""><b>E-mail:</b> </label> <input type="text" value="" name="email"
+							<label for=""><b>E-mail:</b> </label> <input type="email" value="" name="email"
 								class="form-control" placeholder="email@email.com" required />
 						</div>
 
@@ -135,11 +135,11 @@
 			</thead>
 			<tbody>
 				<!--NÃO SEI PQ N ESTA MOSTRANDO-->
-				<tr th:each="candidato: ${candidatoss}">
+				<tr th:each="candidato: ${candidato}">
 					<td><span th:text="${candidato.nomeCandidato}"></span></td>
 					<td><span th:text="${candidato.rg}"></span ></td>
 					<td><span th:text="${candidato.email}"></span></td>
-					<td><a class="waves-effect waves-light btn-small" th:href="${(mvc.url('VC.#deletarCandidato').arg(0,candidato.rg)).build()}"><button type="button"
+					<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('VC#deletarCandidato').arg(0,candidato.rg)).build()}"><button type="button"
 								class="btn btn-danger">Excluir</button></a></td>
 				</tr>
 			</tbody>
