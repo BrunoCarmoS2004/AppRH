@@ -1,4 +1,4 @@
-package com.br.AppRH.AppRH;
+/*package com.br.AppRH.AppRH;
 
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
@@ -37,3 +37,4 @@ public class DataConfiguration {
         return adapter;
     }
 }
+*/
